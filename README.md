@@ -18,7 +18,7 @@ El razonamiento completo de estas decisiones está en `Primer_Avance_MongoDB.doc
 https://educonecta-api.onrender.com
 ```
 
-> El free tier de Render "duerme" tras ~15 min sin tráfico. La primera petición después de eso puede tardar hasta 50-60 segundos mientras el servicio despierta — esto es esperado, no un error.
+> El free tier de Render "duerme" tras 15 min sin tráfico. La primera petición después de eso puede tardar hasta 50-60 segundos mientras el servicio despierta — esto es esperado, no un error.
 
 ## Endpoints
 
