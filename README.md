@@ -5,7 +5,7 @@ Equipo 5 — Caso 5: EduConecta
 
 ## Arquitectura
 
-- **Despliegue:** Monolito modular
+- **Despliegue:** (N-CAPAS)
 - **Organización interna:** N-Capas (Domain / Application / Infrastructure / Api)
 - **Base de datos:** MongoDB Community Server, auto-hospedado vía Docker (sin MongoDB Atlas)
 - **PaaS:** Render (free tier), API y MongoDB corriendo en el mismo contenedor
