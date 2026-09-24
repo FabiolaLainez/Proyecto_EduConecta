@@ -46,3 +46,51 @@ https://educonecta-api.onrender.com
 6. No se puede eliminar un tutor que tiene sesiones futuras agendadas.
 
 Todas están implementadas como validadores en `EduConecta.Domain/Validation/SesionValidator.cs`, no como comentarios.
+
+## Cómo probar con Postman
+
+1. Importar la colección y el environment
+2. Abre Postman.
+3. *Import* → arrastra o selecciona EduConecta.postman_collection.json.
+4. Repite *Import* con EduConecta-Render.postman_environment.json.
+5. Arriba a la derecha, en el selector de Environment, elige *"EduConecta - Render"*.
+
+### Correr las peticiones individualmente
+
+Con el environment activo, abre cualquier petición de la colección y dale *Send*. Cada una ya usa {{base_url}} (apunta directo a producción) y las variables encadenadas ({{tutor_id}}, {{estudiante_id}}, {{sesion_id}}, {{sesion_pasada_id}}) que se van llenando automáticamente conforme corres las peticiones que las generan.
+
+*Orden recomendado* (algunas dependen de las anteriores):
+1. POST Tutor
+2. GET Buscar por materia
+3. POST estudiantes
+4. POST sesiones
+5. POST Sesión duración inválida 
+6. PATCH Completar futura 
+7. POST Sesión pasada
+8. PATCH Completar pasada
+9. GET Sesiones estudiante id
+10. DELETE Tutor con sesión futura 
+
+### Correr toda la colección de una vez 
+
+1. Click derecho sobre *My Collection* → *Run collection*.
+2. Selecciona el environment *"EduConecta - Render"*.
+3. Click *Run*.
+4. Postman ejecuta las 12 peticiones en orden y muestra un resumen con el resultado de cada pm.test.
+
+## Correr el proyecto en local (opcional)
+Requisitos: .NET 8.0 SDK, Docker Desktop.
+
+bash
+# Levantar MongoDB en Docker
+docker run -d --name educonecta-mongo -p 27017:27017 -v educonecta-mongo-data:/data/db mongo:7
+
+# Correr la API
+dotnet run --project src/EduConecta.Api
+
+La API queda disponible en http://localhost:5044 o el puerto que indique la consola.
+
+## Equipo
+- Luis Eduardo López
+- Anton Leonardo Acosta
+- Fabiola Michelle Lainez
